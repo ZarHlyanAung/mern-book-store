@@ -16,7 +16,7 @@ const bookSchema = mongoose.Schema(
     },
   },
   {
-    timestamps: trues,
+    timestamps: true,
   }
 );
 
