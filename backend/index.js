@@ -12,7 +12,7 @@ const app = express();
 
 app.use(express.json());
 
-//middleware for handing cors policy
+// middleware for handing cors policy
 app.use(
   cors({
     origin: 'http://localhost:3000',
