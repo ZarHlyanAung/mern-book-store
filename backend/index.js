@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -10,6 +11,15 @@ const PORT = process.env.PORT || 5555;
 const app = express();
 
 app.use(express.json());
+
+//middleware for handing cors policy
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'DELETE', 'PUT'],
+    allowedHeaders: ['Content-Type'],
+  })
+);
 
 app.get('/', (req, res) => {
   console.log(req);
