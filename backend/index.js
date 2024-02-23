@@ -15,7 +15,7 @@ app.use(express.json());
 // middleware for handing cors policy
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:5174',
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     allowedHeaders: ['Content-Type'],
   })
