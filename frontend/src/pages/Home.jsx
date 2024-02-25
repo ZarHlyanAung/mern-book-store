@@ -8,6 +8,8 @@ const Home = () => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log(import.meta.env.MODE, 'node env');
+
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -25,8 +27,9 @@ const Home = () => {
 
   return (
     <div className="p-4  h-full">
-      <div className="flex justify-between items-center ">
+      <div className="flex justify-between items-cente">
         <h1 className="text-3xl font-bold m-8">Book Store</h1>
+        <span className="absolute top-1 left-1">{import.meta.env.MODE}</span>
         <Link to="/books/create">
           <FiPlusSquare className="text-3xl text-blue-500 m-8" />
         </Link>
