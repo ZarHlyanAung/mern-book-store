@@ -13,15 +13,22 @@ const app = express();
 app.use(express.json());
 
 // middleware for handing cors policy
+// app.use(
+//   cors({
+//     origin: [
+//       'http://localhost:5173',
+//       'http://localhost:5174',
+//       'https://mern-book-store-zha.vercel.app/',
+//     ],
+//     methods: ['GET', 'POST', 'DELETE', 'PUT'],
+//     allowedHeaders: ['Content-Type'],
+//   })
+// );
+
+//cors wildcard
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'http://localhost:5174',
-      'https://mern-book-store-zha.vercel.app/',
-    ],
-    methods: ['GET', 'POST', 'DELETE', 'PUT'],
-    allowedHeaders: ['Content-Type'],
+    origin: '*',
   })
 );
 
