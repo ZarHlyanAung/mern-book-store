@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiPlusSquare, FiInfo, FiEdit2, FiDelete } from 'react-icons/fi';
 import Spinner from '../components/Spinner';
+import { BASE_URL } from '../config';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -13,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get('http://localhost:5555/books')
+      .get(`${BASE_URL}/books`)
       .then((res) => {
         setBooks(res.data.data);
         console.log(res.data.data);
@@ -26,7 +27,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="p-4  h-full">
+    <div className="p-4  h-[100vh] ">
       <div className="flex justify-between items-cente">
         <h1 className="text-3xl font-bold m-8">Book Store</h1>
         <span className="absolute top-1 left-1">{import.meta.env.MODE}</span>

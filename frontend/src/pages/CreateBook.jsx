@@ -3,6 +3,7 @@ import Spinner from '../components/Spinner';
 import BackButton from '../components/BackButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '../config';
 
 const CreateBook = () => {
   const [title, setTitle] = useState('');
@@ -19,7 +20,7 @@ const CreateBook = () => {
       publishYear,
     };
     axios
-      .post('http://localhost:5555/books', book)
+      .post(`${BASE_URL}/books`, book)
       .then((res) => {
         console.log(res.data);
         navigate('/');
