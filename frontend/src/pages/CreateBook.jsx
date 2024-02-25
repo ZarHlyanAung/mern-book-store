@@ -4,6 +4,7 @@ import BackButton from '../components/BackButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../config';
+import { useSnackbar } from 'notistack';
 
 const CreateBook = () => {
   const [title, setTitle] = useState('');
@@ -11,6 +12,7 @@ const CreateBook = () => {
   const [publishYear, setPublishYear] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSave = () => {
     setIsLoading(true);
@@ -23,6 +25,8 @@ const CreateBook = () => {
       .post(`${BASE_URL}/books`, book)
       .then((res) => {
         console.log(res.data);
+        enqueueSnackbar('Book Created successfully', { variant: 'success' });
+
         navigate('/');
         setIsLoading(false);
       })

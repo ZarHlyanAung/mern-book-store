@@ -4,6 +4,7 @@ import BackButton from '../components/BackButton';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../config';
+import { useSnackbar } from 'notistack';
 
 const EditBook = () => {
   const [title, setTitle] = useState('');
@@ -12,6 +13,7 @@ const EditBook = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleEditSave = () => {
     setIsLoading(true);
@@ -24,6 +26,8 @@ const EditBook = () => {
       .put(`${BASE_URL}/books/${id}`, book)
       .then((res) => {
         console.log(res.data);
+        enqueueSnackbar('Book Edited successfully', { variant: 'success' });
+
         navigate('/');
         setIsLoading(false);
       })
